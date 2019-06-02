@@ -17,13 +17,11 @@ def echo_client(server_addr):
             temperture=[]  # 온도를 저장하기 위한 리스트
             ser.write("in".encode('utf-8'))
             temperture.append(float(ser.readline()))
-            s_msg = "type:load\r\ntime:%s\r\ntemperature%s\r\n" %(datetime.datetime.now(),str(temperture))  #시간과 온도를 서버로 보냄
+            s_msg = "type:load\r\ntime:%s\r\ntemperature%s\r\n" %(datetime.datetime.now(),temperture[0])  #시간과 온도를 서버로 보냄
             sock.send(s_msg.encode('utf-8'))
-
-
         data = sock.recv(1024).decode('utf-8')
         print(data,end='')
     sock.close()
 
 if __name__ == '__main__':
-    echo_client(('192.168.0.33',50011))
+    echo_client(('192.168.0.63',50011))
