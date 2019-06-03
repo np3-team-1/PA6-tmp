@@ -30,6 +30,7 @@ def echo_server(my_port):
                     db.commit()
                     msg = "server received\n"
                     conn.send(msg.encode())
+                    
                 db.close()
 
         # Exception Handling
@@ -41,7 +42,6 @@ def echo_server(my_port):
             print('client closed', client_addr)
         finally:
             conn.close()
-
 
 if __name__ == '__main__':
     echo_server(50011)   # 포트번호
