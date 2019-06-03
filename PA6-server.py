@@ -25,7 +25,7 @@ def echo_server(my_port):
                 # data type load
                 if(s[0][5:]=='load'): # 데이터타입이 load 이면
                     datein=(s[1][5:]+" "+s[2])[:19] # 날짜와 초 단위까지나오게
-                    tmp = s[3][:]
+                    tmp = s[3][-5:]
                     cursor.execute("INSERT INTO TMP VALUES(?, ?);",(datein, tmp)) # 데이터 베이스에 값 datein, temperature값 저장
                     db.commit()
                     msg = "server received\n"
