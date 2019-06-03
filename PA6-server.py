@@ -30,18 +30,6 @@ def echo_server(my_port):
                     db.commit()
                     msg = "server received\n"
                     conn.send(msg.encode())
-
-                # data type get
-                elif(s[0][5:]=='get'): # 데이터타입이 get이면
-                    dateget = s[1][5:]+" "+s[2]
-                    intable=False
-                    for row in cursor.execute('SELECT * FROM TMP'):
-                        if dateget == row[0]:
-                            msg="client founded ny serverDB\n".format(row[1])
-                            conn.send(msg.encode())
-                            intable=True
-                    if intable==False :
-                        conn.send("wrong\n".encode())
                 db.close()
 
         # Exception Handling
